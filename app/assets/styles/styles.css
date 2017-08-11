@@ -3,4 +3,9 @@
 @import "base/_variable";
 @import "base/_mixins";
 @import "base/_global";
-@import "modules/_basic";
+@import "modules/_navbar";
+@import "modules/_jumbotron";
+@import "modules/_album";
+@import "modules/_card";
+@import "modules/_pages";
+
