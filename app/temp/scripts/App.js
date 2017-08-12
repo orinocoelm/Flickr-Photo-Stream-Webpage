@@ -99,7 +99,7 @@ var PhotoSystem = function () {
 		value: function getPhotos() {
 			this.tags = $(".srchtext").val();
 			this.pageNum = $(".pages-input").val();
-			console.log("getPhotos called" + $(".srchtext").val());
+
 			if (this.searchBtn.hasClass("disabled")) {
 				return;
 			}
@@ -123,21 +123,20 @@ var PhotoSystem = function () {
 				},
 				success: function success(response) {
 					var res = JSON.parse(response.slice(14, response.length - 1));
-					console.log("the response was " + response);
+
 					if (res.photos.total > 8) {
 						$(".key-image").each(function (cnt) {
 							$(this).attr('src', "https://farm" + res.photos.photo[cnt].farm + ".staticflickr.com/" + res.photos.photo[cnt].server + "/" + res.photos.photo[cnt].id + "_" + res.photos.photo[cnt].secret + "_n.jpg");
 							$(this).next().text(res.photos.photo[cnt].title);
 						});
 						$(".res-info").text("");
-						console.log("https://farm" + res.photos.photo[0].farm + ".staticflickr.com/" + res.photos.photo[0].server + "/" + res.photos.photo[0].id + "_" + res.photos.photo[0].secret + ".jpg");
 					} else {
-						console.log("not enough photos returned to populate grid");
 						$(".res-info").text("Sorry, No results found.");
 					}
 				},
 				error: function error(jqXHR, exception) {
 					console.log('error: status ' + jqXHR.status + ' response ' + exception);
+					$(".res-info").text("Sorry, No results found.");
 				}
 			});
 		}
@@ -189,16 +188,15 @@ var ValidateSystem = function () {
 				if (this.srchbtn.hasClass("disabled")) {
 					this.srchbtn.removeClass("disabled");
 				}
-				console.log("validation called on " + this.txt + " true");
+
 				if (theEvent.keyCode == 13) {
-					console.log("ya Return pressed");
+
 					this.srchbtn.trigger("click");
 				}
 			} else {
 				if (!this.srchbtn.hasClass("disabled")) {
 					this.srchbtn.addClass("disabled");
 				}
-				console.log("validation called on " + this.txt + " false");
 			}
 		}
 	}]);

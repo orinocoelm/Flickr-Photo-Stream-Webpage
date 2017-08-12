@@ -17,16 +17,17 @@ class ValidateSystem {
 			if ((this.srchbtn).hasClass("disabled")) {
 				this.srchbtn.removeClass("disabled");
 			}
-			console.log("validation called on " + this.txt + " true" );
+			
 			if (theEvent.keyCode == 13) {
-				console.log("ya Return pressed");
+				
 				this.srchbtn.trigger("click");
+				
 		    }
 		} else {
 			if (!(this.srchbtn).hasClass("disabled")) {
 				this.srchbtn.addClass("disabled");
 			}
-			console.log("validation called on " + this.txt + " false" );
+			
 		}
 		
 	}
